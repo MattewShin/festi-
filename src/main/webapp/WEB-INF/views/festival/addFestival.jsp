@@ -110,12 +110,13 @@ function getLcatList(){
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="index">Home</a></li>
+					<li class="nav-item"><a class="nav-link active" href="index">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="festival">Festival</a></li>
 					<li class="nav-item"><a class="nav-link" href="letfe">Let's Festival</a></li>
 					<li class="nav-item"><a class="nav-link" href="aon">After_online</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
-        </ul>
+					<li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypage">Mypage</a></li>
+				</ul>
        <!--  <p class="mb-0"><a href="#" class="btn btn-primary rounded"><span class="ion-ios-add"></span> Add Listing</a></p> -->
       </div>
     </div>

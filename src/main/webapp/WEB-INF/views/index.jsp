@@ -65,8 +65,8 @@ function movepage(){
 	<nav class="navbar navbar-expand-lg  ftco-navbar-light">
 		<div class="container-xl">
 			<a class="navbar-brand d-flex align-items-center" href="index"> <span
-				class="flaticon flaticon-compass"></span> <span class="">Directone
-					<small>Directory and Listing</small>
+				class="flaticon flaticon-compass"></span> 
+				<span class="">Festi+<small>Festival In Now</small>
 			</span>
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -79,8 +79,7 @@ function movepage(){
 				<ul class="navbar-nav m-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active" href="index">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="festival">Festival</a></li>
-					<li class="nav-item"><a class="nav-link" href="letfe">Let's
-							Festival</a></li>
+					<li class="nav-item"><a class="nav-link" href="letfe">Let's Festival</a></li>
 					<li class="nav-item"><a class="nav-link" href="aon">After_online</a></li>
 					<li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
 					<li class="nav-item"><a class="nav-link" href="mypage">Mypage</a></li>

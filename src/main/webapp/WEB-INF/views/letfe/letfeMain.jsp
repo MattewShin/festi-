@@ -170,10 +170,10 @@ $(document).ready(function(){
         <ul class="navbar-nav m-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active" href="index">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="festival">Festival</a></li>
-					<li class="nav-item"><a class="nav-link" href="letfe">Let's
-							Festival</a></li>
+					<li class="nav-item"><a class="nav-link" href="letfe">Let's Festival</a></li>
 					<li class="nav-item"><a class="nav-link" href="aon">After_online</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
+					<li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypage">Mypage</a></li>
 				</ul>
        
        			<c:choose>

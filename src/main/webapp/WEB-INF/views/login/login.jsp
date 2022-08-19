@@ -110,8 +110,8 @@ $(function(){
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="festival">FESTIVAL</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="letfe">LET'S FESTIVAL</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="aon">AFTER-ONLINE</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="blog">BLOG</a>
-</li></ul>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="blog">BLOG</a></li>
+</ul>
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>

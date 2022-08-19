@@ -23,6 +23,14 @@
 <link id="u-theme-google-font" rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
+<!-- css 추가 -->
+
+	<link rel="stylesheet" href="resources/css/animate.css">
+	<link rel="stylesheet" href="resources/css/flaticon.css">
+	<link rel="stylesheet" href="resources/css/tiny-slider.css">
+	<link rel="stylesheet" href="resources/css/glightbox.min.css">
+	<link rel="stylesheet" href="resources/css/aos.css">
+	<link rel="stylesheet" href="resources/css/style.css">
 
 
 
@@ -332,7 +340,7 @@
 	</section>
 
 
-	<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer"
+<!-- 	<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer"
 		id="sec-3e41">
 		<div class="u-clearfix u-sheet u-sheet-1">
 			<p class="u-small-text u-text u-text-variant u-text-1">Sample
@@ -349,7 +357,108 @@
 		<a class="u-link" href="" target="_blank"> <span>Website
 				Builder Software</span>
 		</a>.
-	</section>
+	</section> -->
 
+	<!-- 푸터 시작 -->
+	<footer class="ftco-footer">
+		<div class="container-xl">
+			<div class="row mb-5 pb-5 justify-content-between">
+				<div class="col-md-6 col-lg">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2 logo d-flex">
+							<a class="navbar-brand align-items-center" href="index"> <span
+								class="">Directone <small>Directory and Listing</small></span>
+							</a>
+						</h2>
+						<p>A small river named Duden flows by their place and supplies
+							it with the necessary regelialia.</p>
+						<ul class="ftco-footer-social list-unstyled mt-2">
+							<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+							<li><a href="#"><span class="fa fa-facebook"></span></a></li>
+							<li><a href="#"><span class="fa fa-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-2">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Explore</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About
+									Us</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Account</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Listing</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Pricing
+									Packages</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Pricing
+									Packages</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-2">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Quick Links</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact
+									Us</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Terms
+									&amp; Conditions</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Privacy</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Feedbacks</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-2">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Categories</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Food
+									&amp; Drinks</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Hotels</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Shopping</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Beauty</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Fitness</a></li>
+							<li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Bar
+									&amp; Club</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon fa fa-map marker"></span><span
+									class="text">203 Fake St. Mountain View, San Francisco,
+										California, USA</span></li>
+								<li><a href="#"><span class="icon fa fa-phone"></span><span
+										class="text">+2 392 3929 210</span></a></li>
+								<li><a href="#"><span
+										class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid px-0 py-5 bg-darken">
+			<div class="container-xl">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p class="mb-0"
+							style="color: rgba(255, 255, 255, .5); font-size: 13px;">
+							Copyright &copy;
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
+							All rights reserved | This template is made with <i
+								class="fa fa-heart color-danger" aria-hidden="true"></i> by <a
+								href="https://colorlib.com" target="_blank"
+								rel="nofollow noopener">Colorlib</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- 푸터 끝 -->
 </body>
 </html>

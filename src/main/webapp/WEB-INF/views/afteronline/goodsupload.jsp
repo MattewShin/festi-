@@ -61,7 +61,7 @@
     <div class="container-xl">
       <a class="navbar-brand d-flex align-items-center" href="index">
         <span class="flaticon flaticon-compass"></span>
-        <span class="">Directone <small>Directory and Listing</small></span>
+        <span class="">Festi+<small>Festival In Now</small>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa fa-bars"></span> Menu
@@ -69,14 +69,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
    				<ul class="navbar-nav m-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active" href="index">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="about">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="listing">Listing</a></li>
+					<li class="nav-item"><a class="nav-link" href="festival">Festival</a></li>
+					<li class="nav-item"><a class="nav-link" href="letfe">Let's Festival</a></li>
+					<li class="nav-item"><a class="nav-link" href="aon">After_online</a></li>
 					<li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
-					
-					<!-- 추가  -->
-					<li class="nav-item"><a class="nav-link" href="aon"> After_Online </a></li>
-					
+					<li class="nav-item"><a class="nav-link" href="mypage">Mypage</a></li>
 				</ul>
   <!--       <p class="mb-0"><a href="#" class="btn btn-primary rounded"><span class="ion-ios-add"></span> Add Listing</a></p> -->
       </div>

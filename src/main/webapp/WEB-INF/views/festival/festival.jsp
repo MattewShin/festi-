@@ -148,12 +148,13 @@ myModal.addEventListener('shown.bs.modal', () => {
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-               <li class="nav-item"><a class="nav-link" href="index">Home</a></li>
-               <li class="nav-item"><a class="nav-link active" href="festival">Festival</a></li>
-               <li class="nav-item"><a class="nav-link" href="letfe">Let's Festival</a></li>
-               <li class="nav-item"><a class="nav-link" href="aon">After_online</a></li>
-               <li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
-            </ul>
+					<li class="nav-item"><a class="nav-link active" href="index">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="festival">Festival</a></li>
+					<li class="nav-item"><a class="nav-link" href="letfe">Let's Festival</a></li>
+					<li class="nav-item"><a class="nav-link" href="aon">After_online</a></li>
+					<li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypage">Mypage</a></li>
+				</ul>
             <c:choose>
             <c:when test="${empty mem_id}">
             <p class="mb-0"><a href="login" class="btn btn-primary rounded"><span class="ion-ios-add"></span>로그인</a></p>

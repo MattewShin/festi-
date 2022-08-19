@@ -111,7 +111,8 @@
 					<li class="nav-item"><a class="nav-link" href="festival">Festival</a></li>
 					<li class="nav-item"><a class="nav-link" href="letfe">Let's Festival</a></li>
 					<li class="nav-item"><a class="nav-link" href="aon">After_online</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
+					<li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypage">Mypage</a></li>
 				</ul>
 				<!-- <p class="mb-0">
 					<a href="#" class="btn btn-primary rounded"><span
