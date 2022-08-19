@@ -272,7 +272,7 @@ public class LetfeControllerYB {
 		@RequestMapping(value = "blog-single-letfeInfo", method = RequestMethod.GET)
 		public String letfeinfo1(Model m,HttpServletRequest http, LetfeVO vo) throws Exception {
 		
-			int lf_code = Integer.parseInt(http.getParameter("lf_code"));
+			String lf_code = (String)http.getParameter("lf_code");
 			int img_code =Integer.parseInt(http.getParameter("img_code"));
 			LetfeVO years = letfeService.years(vo);
 			LetfeVO months = letfeService.months(vo);
@@ -305,7 +305,7 @@ public class LetfeControllerYB {
 		@GetMapping(value="insertParty")		
 		public int insertParty(HttpServletRequest http) throws Exception {
 			
-			int lf_code = Integer.parseInt(http.getParameter("lf_code"));
+			String lf_code = (String)http.getParameter("lf_code");
 			
 			letfeService.insertPartyMember(lf_code);
 			int lf_party = letfeService.selectPartyMember(lf_code);
@@ -318,7 +318,7 @@ public class LetfeControllerYB {
 		@GetMapping(value="insertPartyTable")
 		public String insertPartyTable(LetfeVO vo, HttpServletRequest http) throws Exception{
 			
-			int lf_code = Integer.parseInt(http.getParameter("lf_code"));
+			String lf_code = (String)http.getParameter("lf_code");
 			String mem_id = http.getParameter("mem_id");
 			
 			vo.setLf_code(lf_code);
@@ -335,7 +335,7 @@ public class LetfeControllerYB {
 		@GetMapping(value="partyCheck")
 		public int partyCheck(LetfeVO vo, HttpServletRequest http) throws Exception{
 			
-			int lf_code = Integer.parseInt(http.getParameter("lf_code"));
+			String lf_code = (String)http.getParameter("lf_code");
 			String mem_id = http.getParameter("mem_id");
 			vo.setLf_code(lf_code);
 			vo.setMem_id(mem_id);
@@ -362,7 +362,7 @@ public class LetfeControllerYB {
 		@ResponseBody
 		@GetMapping(value="master_putPt")
 		public String master_putPt(LetfeVO vo, HttpServletRequest http) throws Exception{
-			int lf_code = Integer.parseInt(http.getParameter("lf_code"));
+			String lf_code = (String)http.getParameter("lf_code");
 			String mem_id = http.getParameter("mem_id");
 			
 			vo.setLf_code(lf_code);

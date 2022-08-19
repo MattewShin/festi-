@@ -109,7 +109,7 @@ function getCommentList(){
 
 			},
 			error : function(err){
-					alert(err);
+					alert('에러1');
 				console.log(err);
            
    	}
@@ -281,7 +281,7 @@ function getCommentList(){
 <!-- 축제 사진 -->         
           <p>
           <c:forEach items="${image}" var="img">          
-            <img src="resources/images/${img }" alt="" class="img-fluid">
+            <img src="resources/images/${img}" alt="" class="img-fluid">
           </c:forEach>
           </p>
 <!-- 축제 제목 -->         
@@ -290,8 +290,8 @@ function getCommentList(){
           <p>${fest.fest_content}</p>
 
 <!-- 축제 제목2 -->  
-          <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2>
-          <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
+        <!--   <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2>
+          <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p> -->
 
 <!-- 축제 사진 -->         
           <p>

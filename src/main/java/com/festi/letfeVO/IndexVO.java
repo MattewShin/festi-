@@ -7,7 +7,7 @@ public class IndexVO {
 	
 	// 공통 VO
 	private String aticle_no;
-	private Integer fest_code;	// 에온, 렛페
+	private String fest_code;	// 에온, 렛페
 	
 	// 3. 축제 정보 VO
 	private String fest_scatname;
@@ -30,7 +30,7 @@ public class IndexVO {
 	// 4. 진행 중인 렛페 VO
 	private String img_save; //저장된 파일이름 (b_realfname)(긴거)
 	
-	private Integer lf_code;	// 렛페코드
+	private String lf_code;	// 렛페코드
 	private String lf_name;		//축제명	
 	private String lf_content;	// 축제설명
 	private String lf_start;	// 시작일
@@ -42,7 +42,7 @@ public class IndexVO {
 	
 	private String goods_name;
 	private String goods_comment;
-	private Integer goods_code;
+	private String goods_code;
 	private Integer goods_price;
 	private Integer mem_code;
 	private Integer ao_stock;	// 재고

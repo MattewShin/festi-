@@ -81,43 +81,43 @@
             let sid = $("#sessionid").val();
             
             $.ajax({
-            	type :'get',
-            	url :'lovefind',
-            	data :{'sid' : sid},
-            	dataType : 'json',
-            	success : function(result){
-            		for(i of result){
-            			
-            		}
-            	}
-            	
+               type :'get',
+               url :'lovefind',
+               data :{'sid' : sid},
+               dataType : 'json',
+               success : function(result){
+                  for(i of result){
+                     
+                  }
+               }
+               
             });
             
     });
     
     function heart(festcode){
     
-    	let sid = $("#sessionid").val();
-    	let heart = $("#"+festcode+"heart");
-    	
-    	heart.removeAttr('class');
-    	$.ajax({
-    		type :'get',
-    		url : 'love',
-    		data : {'festcode' : festcode, 'sid' : sid},
-    		success : function(result){
-    			if(result=="insert"){
-    				heart.attr('class', 'ion-ios-heart');
-    				
-    			}else{
-    				heart.attr('class', 'ion-ios-heart-empty');
-    			}
-    		},
-    		error:function(err){
-    			alert('에러');
-    			console.log(err);
-    		}
-    	});	
+       let sid = $("#sessionid").val();
+       let heart = $("#"+festcode+"heart");
+       
+       heart.removeAttr('class');
+       $.ajax({
+          type :'get',
+          url : 'love',
+          data : {'festcode' : festcode, 'sid' : sid},
+          success : function(result){
+             if(result=="insert"){
+                heart.attr('class', 'ion-ios-heart');
+                
+             }else{
+                heart.attr('class', 'ion-ios-heart-empty');
+             }
+          },
+          error:function(err){
+             alert('에러');
+             console.log(err);
+          }
+       });   
     }
     
 </script>
@@ -138,33 +138,33 @@ myModal.addEventListener('shown.bs.modal', () => {
 
     
    <nav class="navbar navbar-expand-lg  ftco-navbar-light">
-		<div class="container-xl">
-			<a class="navbar-brand d-flex align-items-center" href="index">
-				<span class="flaticon flaticon-compass"></span>
-				<span class="">Festi+ <small>FESTIVAL IN NOW</small></span>
-			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="fa fa-bars"></span> Menu
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav m-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="index">Home</a></li>
-					<li class="nav-item"><a class="nav-link active" href="festival">Festival</a></li>
-					<li class="nav-item"><a class="nav-link" href="letfe">Let's Festival</a></li>
-					<li class="nav-item"><a class="nav-link" href="aon">After_online</a></li>
-					<li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
-				</ul>
-				<c:choose>
-				<c:when test="${empty mem_id}">
-				<p class="mb-0"><a href="login" class="btn btn-primary rounded"><span class="ion-ios-add"></span>로그인</a></p>
-				</c:when>
-				<c:when test="${not empty mem_id}">
-				<p class="mb-0"><a href="logout" class="btn btn-primary rounded"><span class="ion-ios-add"></span>로그아웃</a></p>
-				</c:when>
-				</c:choose>
-			</div>
-		</div>
-	</nav>
+      <div class="container-xl">
+         <a class="navbar-brand d-flex align-items-center" href="index">
+            <span class="flaticon flaticon-compass"></span>
+            <span class="">Festi+ <small>FESTIVAL IN NOW</small></span>
+         </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span> Menu
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+               <li class="nav-item"><a class="nav-link" href="index">Home</a></li>
+               <li class="nav-item"><a class="nav-link active" href="festival">Festival</a></li>
+               <li class="nav-item"><a class="nav-link" href="letfe">Let's Festival</a></li>
+               <li class="nav-item"><a class="nav-link" href="aon">After_online</a></li>
+               <li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
+            </ul>
+            <c:choose>
+            <c:when test="${empty mem_id}">
+            <p class="mb-0"><a href="login" class="btn btn-primary rounded"><span class="ion-ios-add"></span>로그인</a></p>
+            </c:when>
+            <c:when test="${not empty mem_id}">
+            <p class="mb-0"><a href="logout" class="btn btn-primary rounded"><span class="ion-ios-add"></span>로그아웃</a></p>
+            </c:when>
+            </c:choose>
+         </div>
+      </div>
+   </nav>
 
    <section class="hero-wrap hero-wrap-2"
       style="background-image: url('resources/images/bg_3.jpg');">
@@ -382,7 +382,7 @@ myModal.addEventListener('shown.bs.modal', () => {
          <br/>
          <br/>
          <br/>
-         	<c:forEach items="${list}" var="fest">
+            <c:forEach items="${list}" var="fest">
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch"
                data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
                <div class="listing-wrap">
@@ -421,7 +421,7 @@ myModal.addEventListener('shown.bs.modal', () => {
                               class="d-flex align-items-center justify-content-center">
                               <span id="${fest.fest_code }heart" class="ion-ios-heart-empty">
                             <input type="hidden" id="festcode" name="festcode" value="${fest.fest_code }"/>
- 	                    	<input type="hidden" id="sessionid" name="sessionid" value="${sessionScope.mem_id }"/>
+                           <input type="hidden" id="sessionid" name="sessionid" value="${sessionScope.mem_id }"/>
                               </span>
                               
                               </a>
@@ -436,11 +436,11 @@ myModal.addEventListener('shown.bs.modal', () => {
             <div class="col text-center">
                <div class="block-27">
                   <ul>
-                  	<li><a href="festival?pageNUM=${pageNUM-1 }">&lt;</a></li>
+                     <li><a href="festival?pageNUM=${pageNUM-1 }">&lt;</a></li>
                   <c:forEach var="i" begin="1" end="${totalPage }">
-					<li><a href="festival?pageNUM=${i }&keyword=${keyword}"> ${i } </a></li>
-					</c:forEach>
-                  	<li><a href="festival?pageNUM=${pageNUM+1 }">&gt;</a></li>
+               <li><a href="festival?pageNUM=${i }&keyword=${keyword}"> ${i } </a></li>
+               </c:forEach>
+                     <li><a href="festival?pageNUM=${pageNUM+1 }">&gt;</a></li>
                   </ul>
                </div>
             </div>

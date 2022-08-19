@@ -48,7 +48,7 @@ public interface LetfeService {
 	
 												//*****상세페이지 이동	
 	// 신영범 렛페 상세
-	 List<LetfeVO> letfeinfo(int lf_code);
+	 List<LetfeVO> letfeinfo(String lf_code);
 		
 	// 신영범 렛페 이미지
 	 List<ImgVO> letfeinfoimg(int img_code);
@@ -74,15 +74,15 @@ public interface LetfeService {
 
 		
 	//조회수
-	int clickLfCnt(int lf_code) throws Exception;
+	int clickLfCnt(String lf_code) throws Exception;
 
 	//김민석 렛페 상세페이지 파티 참여 TABLE: LETFE 
-	int insertPartyMember(int lf_code) throws Exception;
+	int insertPartyMember(String lf_code) throws Exception;
 	
-	int selectPartyMember(int lf_code);
+	int selectPartyMember(String lf_code);
 
 	//김민석 참여 테이블 인서트
-	void saveLetfeParty(int lf_code);
+	void saveLetfeParty(String lf_code);
 
 	void insertPartyTable(LetfeVO vo);
 

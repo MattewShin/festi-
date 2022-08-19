@@ -56,10 +56,10 @@ public class BlogVO {
 
 
 			//이게 맞는지 모르겠지만 경로는 이렇게 줌
-			this.img_route = ("D:/springweb/zfinalz/src/main/webapp/resources/blogpage/upload/"+img_save);
+			this.img_route = ("D:/final/src/main/webapp/resources/blogpage/upload/"+img_save);
 			//***********************************************
 			// 해당 경로로 변경
-			File f = new File("D:\\springweb\\zfinalz\\src\\main\\webapp\\resources\\blogpage\\upload\\"+img_save);
+			File f = new File("D:\\final\\src\\main\\webapp\\resources\\blogpage\\upload\\"+img_save);
 
 			 try {
 		            file.transferTo(f);

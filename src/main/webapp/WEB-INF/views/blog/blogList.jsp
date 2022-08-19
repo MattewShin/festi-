@@ -135,12 +135,10 @@
 				<div class="col-md-3 d-flex">
 					<div class="blog-entry justify-content-end" data-aos="fade-up"
 						data-aos-duration="1000" data-aos-delay="100">
-						<a href="gotoDetail?post_code=${allList.post_code}" class="block-20 img d-flex align-items-end gotoDetail"
-							value='bl1' style="background-image: url('resources/blogpage/upload/${allList.img_save}');">
+						<a href="gotoDetail?post_code=${allList.post_code}" class="block-20 img d-flex align-items-end gotoDetail" value='bl1' style="background-image: url('resources/blogpage/upload/${allList.img_save}');">
 							<div class="list-team d-flex align-items-center mb-4">
 								<div class="d-flex align-items-center">
-									<div class="img"
-										style="background-image: url(resources/blogpage/images/person_1.jpg);"></div>
+									<div class="img" style="background-image: url(resources/blogpage/images/person_1.jpg);"></div>
 									<h3 class="ml-2 mb-0">${allList.mem_id}</h3>
 								</div>
 								<div class="text-right">

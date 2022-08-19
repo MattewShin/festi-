@@ -77,7 +77,7 @@ public class LetfeServiceImpl implements LetfeService {
 	
 	
 	@Override
-	public List<LetfeVO> letfeinfo(int lf_code) {
+	public List<LetfeVO> letfeinfo(String lf_code) {
 		// TODO Auto-generated method stub
 		return letfeDAO.letfeinfo(lf_code);
 	}
@@ -122,12 +122,12 @@ public class LetfeServiceImpl implements LetfeService {
 	
 
 	@Override
-	public int clickLfCnt(int lf_code) throws Exception {		
+	public int clickLfCnt(String lf_code) throws Exception {		
 		return letfeDAO.clickLfCnt(lf_code);
 	}
 	
 	//김민석 렛페 상세페이지 파티 참여 TABLE: LETFE 
-	public int insertPartyMember(int lf_code) throws Exception{
+	public int insertPartyMember(String lf_code) throws Exception{
 		
 	System.out.println("서비스 임플 =====>"    + lf_code);
 		
@@ -135,12 +135,12 @@ public class LetfeServiceImpl implements LetfeService {
 	}
 
 	@Override
-	public void saveLetfeParty(int lf_code) {
+	public void saveLetfeParty(String lf_code) {
 		letfeDAO.saveLetfeParty(lf_code);
 	}
 
 	@Override
-	public int selectPartyMember(int lf_code) {
+	public int selectPartyMember(String lf_code) {
 
 		return letfeDAO.selectPartyMember(lf_code);
 	}

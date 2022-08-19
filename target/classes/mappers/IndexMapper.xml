@@ -22,10 +22,11 @@
 	</select>
 	
 	<select id="festInfo" parameterType="IndexVO" resultType="IndexVO">
-	
+	<![CDATA[
 		SELECT *
 		FROM festival
-	
+		where rownum <=12
+	]]>
 	</select>
 	
 
@@ -43,6 +44,7 @@
 	
 		SELECT lf_name, lf_content, lf_party, lf_party_max 
 		FROM letfe
+		where lf_code='999'
 	
 	</select>
 	

@@ -57,10 +57,10 @@ public class AonVO {
 			
 			
 			//�̰� �´��� �𸣰����� ��δ� �̷��� ��
-			this.img_route = ("D:/springweb/zfinalz/src/main/webapp/resources/afteronline/aoupload/"+img_save);
+			this.img_route = ("D://final/src/main/webapp/resources/afteronline/aoupload/"+img_save);
 			//***********************************************
 			// �ش� ��η� ����
-			File f = new File("D:\\springweb\\zfinalz\\src\\main\\webapp\\resources\\afteronline\\aoupload\\"+img_save);
+			File f = new File("D:\\final\\src\\main\\webapp\\resources\\afteronline\\aoupload\\"+img_save);
 		
 			try {
 				file.transferTo(f);

@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class LetfeVO {
 	
-	private Integer lf_code;
+	private String lf_code;
 	private String lf_name;		//축제명
 	private String lf_start;	// 시작일
 	private String lf_end;		// 마감일

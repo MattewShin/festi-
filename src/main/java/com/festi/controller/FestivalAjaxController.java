@@ -29,9 +29,7 @@ public class FestivalAjaxController {
 	// ajax로 댓글 해당글 댓글 셀렉트
 		@GetMapping("blog-single-Replyselect")
 		public List<FestivalVO> selectReply(FestivalVO vo) {
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>" + vo.getFest_code());
 			List<FestivalVO> replyList = festivalService.selectReply(vo.getFest_code());
-			System.out.println(replyList.get(0).getMem_profile());
 
 			for (FestivalVO list : replyList) {
 				String listId = list.getMem_id();

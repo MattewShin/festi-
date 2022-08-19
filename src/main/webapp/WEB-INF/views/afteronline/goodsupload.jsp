@@ -125,7 +125,7 @@
                 <h4 class="u-align-center u-custom-font u-font-montserrat u-text u-text-1">상품 등록</h4>
                 <div class="u-form u-form-1">
                 
-                 <form action ="aonuploadok" id="aonupload"  method="POST" enctype="multipart/form-data" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" name="form" style="padding: 0px;">
+                 <form action ="aonuploadok" id="aonupload"  method="POST" enctype="multipart/form-data" class="u-clearfix u-form-spacing-15 u-inner-form" name="form" style="padding: 0px;">
 
                     <div class="u-form-group u-form-name u-label-left">
                       <label for="name-4c18" class="u-label u-text-black u-label-1">상품명 : </label>
@@ -153,7 +153,8 @@
                         <a id="aonload" class="u-active-palette-2-light-1 u-border-5 u-border-active-palette-2-light-1 u-border-hover-palette-2-light-1 u-border-palette-2-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-2-light-1 u-palette-2-base u-radius-10 u-btn-1">등록</a>                  
                       </div> -->
                      </div>
-                   </form>  
+                   </form> 
+                    
                   </div>
                 </div>
               </div>

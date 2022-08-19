@@ -18,7 +18,7 @@ public class AonController {
 	@Autowired
 	private AonService aonService;
 
-	// ¾Ö¿Â ´­¸®¸é º¸¿©Áö´Â ÆäÀÌÁö
+	// ì—ì˜¨ ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ëŠ” ë©”ì†Œë“œ
 
 	@RequestMapping("aon")
 	public String openAonList(Model model) {
@@ -28,7 +28,7 @@ public class AonController {
 		return "afteronline/aonlist";
 	}
 
-	// »óÇ°À» Å¬¸¯À» ÇÏ¿´À»¶§ »ó¼¼º¸±â·Î µÇ´Â ÆäÀÌÁö
+	// ì—ì˜¨ ìƒì„¸ë³´ê¸°
 	@RequestMapping("aonlook")
 	public String openAonlookpage(@RequestParam("goods_code") String goods_code, Model model) {
 		AonVO avo = aonService.selectAonOne(goods_code);
@@ -37,7 +37,7 @@ public class AonController {
 		return "afteronline/aolookpage";
 	}
 
-	// »óÇ° ÁÖ¹®À» ´­·¶À»¶§ ¹ß»ı
+	//ì£¼ë¬¸
 	@RequestMapping("aonorder")
 	public String onpenAonOrder(@RequestParam("goods_code") String goods_code, Model model) {
 		AonVO avo = aonService.selectAonOne(goods_code);
@@ -47,24 +47,25 @@ public class AonController {
 		return "afteronline/aonorder";
 	}
 
-	// °áÁ¦ ¹öÆ° ´­·ÈÀ»¶§ ÁÖ¹®¿Ï·á
+	//ê²°ì œ
 	@RequestMapping("aonorderok")
 	public String openAonOrderOk() {
 		return "afteronline/aonorderok";
 	}
 
-	// µî·ÏÇÏ´Â ÆäÀÌÁö ¿­¸®°Ô ÇÏ´Â ÄÚµå
+	//ë“±ë¡í˜ì´ì§€ ì˜¤í”ˆ
 	@RequestMapping("goodsupload")
 	public String aonupload() {
 		return "afteronline/goodsupload";
 	}
 
-	// µî·ÏÀ» ÇÏ±â À§ÇÑ ¸Ş¼Òµå
+	//ë“±ë¡
 	@RequestMapping("aonuploadok")
 	public String insertAon(AonVO avo){
 		aonService.aonInsert(avo);
 		
-		return "afteronline/aonlist";
+		
+		return "redirect:aon";
 	}
 	
 

@@ -9,13 +9,13 @@
 		INSERT INTO letfe(
 		lf_code, fest_scatcode,lf_party,lf_party_max,mem_code
 		)VALUES(
-		739, (select fest_scatcode from fest_small where
+		'lf'||letfe_seq.nextval, (select fest_scatcode from fest_small where
 		fest_scatname=#{lf_scatname}),1,#{lf_party_max},(select mem_code from
 		member where mem_id=#{mem_id}))
 	</insert>
 
 	<select id="max" parameterType="LetfeVO" resultType="Integer">
-		select max(lf_code) as lf_code from letfe where mem_code = (select mem_code
+		select 'lf'||to_char(max(to_number(substr(lf_code,3)))) as lf_code from letfe where mem_code = (select mem_code
 		from member where mem_id=#{mem_id})
 	</select>
 
@@ -30,7 +30,8 @@
 		lf_start=#{lf_start},
 		lf_end=#{lf_end},
 		lf_count=0
-		WHERE lf_code = '739'
+		WHERE lf_code = (select 'lf'||to_char(max(to_number(substr(lf_code,3)))) from letfe) 
+		
 		<!-- <insert id='insertLetfe' parameterType="LetfeVO"> -->
 		<!-- INSERT INTO letfe(lf_code,lf_name,lf_start,lf_end,lf_count)VALUES(717,#{lf_name},#{lf_start},#{lf_end},0) -->
 		<!-- </insert> -->
@@ -41,7 +42,8 @@
 	<insert id="saveLetfe" parameterType="ImgVO">
 		INSERT INTO
 		image(img_code,img_origin,img_route,img_save,img_type,img_size,img_reg,article_no)
-		VALUES(971,#{img_origin},#{img_route},#{img_save},#{img_type},#{img_size},sysdate,739)
+		VALUES(image_seq.nextval,#{img_origin},#{img_route},#{img_save},#{img_type},#{img_size},sysdate,(select 'lf'||to_char(max(to_number(substr(lf_code,3)))) from letfe))
+
 		<!--파라미터 갯수 틀린거 없음 -->
 		<!--xml에 설정안함 해야됨 했음 -->
 	</insert>
@@ -57,13 +59,14 @@
 		lf_sim_addr=#{lf_sim_addr},
 		lf_detail_addr=#{lf_detail_addr},
 		lf_postnum=#{lf_postnum}
-		where lf_code = '739'
+		where lf_code = (select 'lf'||to_char(max(to_number(substr(lf_code,3)))) from letfe)
 	</update>
 
 	<!--등록 관련 end -->
 	<!--메인 리스트 불러오기 start -->
 
-	<select id="getImgList" resultType="ImgVO">
+<!-- 이미지 -->
+	<select id="getImgList" resultType="ImgVO" parameterType="ImgVO">
 		SELECT * FROM letfe l,image i where l.lf_code = i.article_no
 		<if test='lf_name != null '>
 			and lf_name like '%' || #{lf_name} || '%'
@@ -80,7 +83,8 @@
 		ORDER BY l.lf_code desc
 	</select>
 
-	<select id="getLefeList" resultType="LetfeVO">
+<!-- 렛페 정보 -->
+	<select id="getLefeList" resultType="LetfeVO" parameterType="LetfeVO">
 		SELECT * FROM letfe l,image i where l.lf_code = i.article_no
 		<if test='lf_name != null '>
 			and lf_name like '%' || #{lf_name} || '%'
@@ -174,12 +178,12 @@
 	<!--클릭할 때 마다 상세페이지 이동 -->
 
 	<!-- 신영범 렛페 상세 페이지 -->
-	<select id="letfeinfo" parameterType="Integer"
+	<select id="letfeinfo" parameterType="String"
 		resultType="LetfeVO">
 
 		SELECT *
 		FROM letfe
-		WHERE lf_code=#{lf_code}
+		WHERE lf_code=#{value}
 
 
 	</select>
@@ -190,36 +194,36 @@
 
 		SELECT *
 		FROM image
-		WHERE img_code=971
+		WHERE img_code=#{value}
 
 	</select>
 
 
 	<!--조회수 클릭 -->
-	<update id="clickLfCnt" parameterType="int">
+	<update id="clickLfCnt" parameterType="String">
 		UPDATE letfe set
 		lf_count = LF_COUNT +1
-		where lf_code=#{lf_code}
+		where lf_code = #{value}
 	</update>
 
 
-	<update id="insertPartyMember" parameterType="int">
+	<update id="insertPartyMember" parameterType="String">
 		UPDATE LETFE SET
 		LF_PARTY = LF_PARTY + 1
-		where lf_code = #{lf_code}
+		where lf_code = #{value}
 	</update>
 
 
-	<select id="selectPartyMember" parameterType="int"
+	<select id="selectPartyMember" parameterType="String"
 		resultType="int">
 		select lf_party from letfe
-		where lf_code = #{lf_code}
+		where lf_code = #{value}
 	</select>
 
 
 	<insert id="insertPartyTable" parameterType="LetfeVO">
 		INSERT INTO PARTY(party_code,party_date,lf_code,mem_code)
-		VALUES(party_seq.nextval,sysdate,#{lf_code},(select mem_code from
+		VALUES(party_seq.nextval,sysdate,'999',(select mem_code from
 		member where mem_id= #{mem_id}))
 	</insert>
 
@@ -232,7 +236,7 @@
 	</select>
 	
 	<!-- 신영범 카운트 다운 -->
-	<select id="years" parameterType="Integer" resultType="LetfeVO">	
+	<select id="years" parameterType="LetfeVO" resultType="LetfeVO">	
 	
 		select substr(lf_start, 1, 4) as years from letfe where lf_code=#{lf_code}
 	
@@ -240,14 +244,14 @@
 		
 	
 	<!-- 신영범 카운트 다운 -->
-	<select id="months" parameterType="Integer" resultType="LetfeVO">
+	<select id="months" parameterType="LetfeVO" resultType="LetfeVO">
 	
 		select substr(lf_start, 6, 2) as months from letfe where lf_code=#{lf_code}
 	
 	</select>
 
 	<!-- 신영범 카운트 다운 -->
-	<select id="days"  parameterType="Integer" resultType="LetfeVO">
+	<select id="days"  parameterType="LetfeVO" resultType="LetfeVO">
 	
 		select substr(lf_start, 9, 2) as days from letfe where lf_code=#{lf_code}
 	

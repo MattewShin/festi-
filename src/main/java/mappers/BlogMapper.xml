@@ -7,8 +7,8 @@
 	<insert id='insertBlog' parameterType="BlogVO">
 	
 		INSERT INTO post VALUES('po'||post_seq.nextval, #{post_title}, #{post_content}, sysdate,
-		(SELECT blog_code FROM blog WHERE mem_code=(SELECT mem_code FROM member WHERE mem_id=#{mem_id})),
-		(SELECT postkind_code FROM postkind WHERE postkind_name=#{postkind_name}))
+		(SELECT postkind_code FROM postkind WHERE postkind_name=#{postkind_name}),
+		(SELECT blog_code FROM blog WHERE mem_code=(SELECT mem_code FROM member WHERE mem_id=#{mem_id})))
 
 	</insert>
 	

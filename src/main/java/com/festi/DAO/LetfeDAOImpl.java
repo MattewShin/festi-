@@ -108,7 +108,7 @@ public List<String> wordSearchSHow(Map<String, String> paraMap) {
 		
 														//렛페 상세 페이지 *****
 		// 신영범 렛페 상세 정보
-		public List<LetfeVO> letfeinfo(int lf_code) {
+		public List<LetfeVO> letfeinfo(String lf_code) {
 
 		 System.out.println("===>  letfeinfo() 호출");
 
@@ -196,12 +196,12 @@ public List<String> wordSearchSHow(Map<String, String> paraMap) {
 	 */
 	
 		  
-			public int clickLfCnt(int lf_code) throws Exception{
+			public int clickLfCnt(String lf_code) throws Exception{
 				return mybatis.update("LetfeDAO.clickLfCnt", lf_code);
 			}
 
 			
-			public int insertPartyMember(int lf_code){
+			public int insertPartyMember(String lf_code){
 				
 				
 				System.out.println("====>(DAOIimpl insertparty ::: ===> "+lf_code);
@@ -211,13 +211,13 @@ public List<String> wordSearchSHow(Map<String, String> paraMap) {
 			
 			
 			@Override
-			public void saveLetfeParty(int lf_code) {
+			public void saveLetfeParty(String lf_code) {
 			
 				mybatis.insert("LetfeDAO.saveLetfeParty", lf_code);
 				
 			}
 
-			public int selectPartyMember(int lf_code) {
+			public int selectPartyMember(String lf_code) {
 				
 				return mybatis.selectOne("LetfeDAO.selectPartyMember",lf_code);
 			}

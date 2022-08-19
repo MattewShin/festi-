@@ -20,13 +20,13 @@ public class ImgVO {
 	
 	//(fk)
 	private Integer class_code; //분류코드
-	private Integer article_no; //분류코드
+	private String article_no; //분류코드
 	
 	private Integer fest_code;	//축제코드
 	private Integer food_code;	//음식코드
 	private Integer fun_code;	//놀거리코드
 	private Integer stay_code;	//숙박코드
-	private Integer lf_code;	//렛페코드
+	private String lf_code;	//렛페코드
 	private Integer goods_code;	//애온코드
 	
 	
@@ -74,10 +74,10 @@ public class ImgVO {
 			
 			
 			//이게 맞는지 모르겠지만 경로는 이렇게 줌
-			this.img_route = ("D:/springweb/zfinalz/src/main/webapp/resources/letfe/upload/"+img_save);
+			this.img_route = ("D:/final/src/main/webapp/resources/letfe/upload/"+img_save);
 			//***********************************************
 			// 해당 경로로 변경
-			File f = new File("D:\\springweb\\zfinalz\\src\\main\\webapp\\resources\\letfe\\upload\\"+img_save);
+			File f = new File("D:\\final\\src\\main\\webapp\\resources\\letfe\\upload\\"+img_save);
 		
 			try {
 				file.transferTo(f);
@@ -147,11 +147,11 @@ public class ImgVO {
 		this.class_code = class_code;
 	}
 
-	public Integer getArticle_no() {
+	public String getArticle_no() {
 		return article_no;
 	}
 
-	public void setArticle_no(Integer article_no) {
+	public void setArticle_no(String article_no) {
 		this.article_no = article_no;
 	}
 
@@ -187,11 +187,11 @@ public class ImgVO {
 		this.stay_code = stay_code;
 	}
 
-	public Integer getLf_code() {
+	public String getLf_code() {
 		return lf_code;
 	}
 
-	public void setLf_code(Integer lf_code) {
+	public void setLf_code(String lf_code) {
 		this.lf_code = lf_code;
 	}
 
