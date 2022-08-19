@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="RegistDAO">
+
+
+<insert id="registMember" parameterType="MemberVO">
+INSERT INTO MEMBER(mem_code,
+mem_id,
+mem_pwd,
+mem_name,
+mem_sex,
+mem_birth,
+mem_sim_addr,
+mem_detail_addr,
+mem_tel,
+mem_email,
+type_code,
+mem_zip_code,
+mem_join)
+VALUES(
+member_seq.nextval,
+#{mem_id},
+#{mem_pwd},
+#{mem_name},
+#{mem_sex},
+#{mem_birth},
+#{mem_sim_addr},
+#{mem_detail_addr},
+#{mem_tel},
+#{mem_email},
+2,
+#{mem_zip_code},
+TO_CHAR(SYSDATE,'YYYY-MM-DD'))
+
+
+</insert>
+
+
+
+<select id="overlapped" parameterType="MemberVO" resultType="int">
+
+select count(mem_id) from member where mem_id = #{mem_id}
+
+</select>
+
+
+
+</mapper>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="indexDAO">
+
+	<!-- 2. 인기 축제 -->
+	
+	<select id="topfest" parameterType="IndexVO" resultType="IndexVO">
+	
+		select * from festival where fest_rate > 40
+	
+	</select>
+
+	<!-- 3. 축제 정보  -->
+	
+	<select id="festCate" parameterType="IndexVO" resultType="IndexVO">
+	
+		SELECT fest_scatname 
+		FROM fest_small 
+		WHERE fest_scatcode = (select fest_scatcode from festival where fest_code =5)
+	
+	</select>
+	
+	<select id="festInfo" parameterType="IndexVO" resultType="IndexVO">
+	
+		SELECT *
+		FROM festival
+	
+	</select>
+	
+
+ 	<!-- 4. 진행 중인 렛페 -->	
+ 	
+  	<select id="letfeImg" parameterType="IndexVO" resultType="IndexVO">
+	
+		SELECT * 
+		FROM image
+		WHERE article_no='739'
+	
+	</select>
+	
+	<select id="letfeInfo" parameterType="IndexVO" resultType="IndexVO">
+	
+		SELECT lf_name, lf_content, lf_party, lf_party_max 
+		FROM letfe
+	
+	</select>
+	
+	<!-- 5. 에온 리스트 -->
+	<select id="aonList" parameterType="IndexVO" resultType="IndexVO">
+	
+		SELECT * 
+		FROM after_online
+	
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

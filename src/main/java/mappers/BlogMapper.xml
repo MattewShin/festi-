@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BlogMapper">
+
+	<!-- 블로그 글 인서트 -->
+	<insert id='insertBlog' parameterType="BlogVO">
+	
+		INSERT INTO post VALUES('po'||post_seq.nextval, #{post_title}, #{post_content}, sysdate,
+		(SELECT blog_code FROM blog WHERE mem_code=(SELECT mem_code FROM member WHERE mem_id=#{mem_id})),
+		(SELECT postkind_code FROM postkind WHERE postkind_name=#{postkind_name}))
+
+	</insert>
+	
+	<!-- 블로그 글 이미지 인서트 -->
+	<insert id="insertBlogImg" parameterType="BlogVO">
+		INSERT INTO image values(image_seq.nextval, #{img_origin}, #{img_route}, #{img_save}, #{img_type}, #{img_size}, sysdate, 
+		(select 'po'||to_char(max(to_number(substr(post_code,3)))) from post 
+		where blog_code=(select blog_code from blog where mem_code=(select mem_code from member where mem_id= #{mem_id}))), 
+		'N')
+	</insert>
+	
+	<!-- 블로그 글 삭제 -->
+	<delete id="deletePost" parameterType="string">
+		DELETE FROM post WHERE post_code = #{value}
+	</delete>
+	
+	<!-- 블로그 해당 글의 이미지 삭제 -->
+	<delete id="deletePostImg" parameterType="string">
+		DELETE FROM image WHERE article_no = #{value}
+	</delete>
+
+	<!-- 개인 블로그 페이지에서 블로그 썸네일 처럼 보게 해주는 sql -->
+	<select id="selectPost" parameterType="string" resultType="BlogVO">
+		<![CDATA[
+			select p.*, i.* from post p, image i where p.post_code = i.article_no and 
+			p.blog_code=(select blog_code from blog where mem_code=(select mem_code from member where mem_id= #{value})) 
+			order by to_number(substr(p.post_code,3)) desc
+		]]>
+	</select>
+	
+	<!-- 전제 글 가져와서 페이징 처리 후 오더바이 때려주는 sql -->
+	<select id="selectAllPost" parameterType="hashmap" resultType="BlogVO">
+		<![CDATA[
+			SELECT * FROM (SELECT p.post_code, p.post_title, p.post_content, p.post_date, i.img_save, m.mem_id, rownum rnum FROM member m, blog b, post p, image i WHERE 
+			m.mem_code = b.mem_code AND b.blog_code = p.blog_code AND p.post_code = i.article_no AND
+			substr(i.article_no, 1, 2) = 'po' 
+		]]>
+		<choose>
+		<when test="category != '' and keyword != '' "> AND (${category} like '%${keyword}%') </when>
+		<when test="category == ''"> AND (m.mem_id like '%${keyword}%' OR p.post_title like '%${keyword}%' OR p.post_content like '%${keyword}%')</when>
+		</choose>
+		<![CDATA[
+			ORDER BY TO_NUMBER(substr(post_code,3)) desc)
+			WHERE rnum >= ${start} AND rnum <= ${end}
+		]]>
+	</select>
+	
+	<!-- 전체 글 수를 가져오는 sql문 -->
+	<select id="totalRecord" resultType='integer' parameterType = 'hashMap'>
+		SELECT COUNT(p.post_code) FROM post p, blog b, member m WHERE p.blog_code = b.blog_code AND b.mem_code = m.mem_code 
+		
+		<if test='category != "" and category != null and keyword != null and keyword != ""'> AND (${category} like '%${keyword}%')</if> 
+
+	</select>
+	
+	<!-- 자세한 블로그 글 가져오는 sql -->
+	<select id="selectBlogDetail" resultType='BlogVO' parameterType="string">
+		SELECT p.*, i.*, m.mem_id AS mem_id FROM post p, image i, blog b, member m WHERE p.post_code = i.article_no AND 
+		p.blog_code = b.blog_code AND b.mem_code = m.mem_code AND
+		p.post_code = #{value}
+	</select>
+	
+	<!-- 해당 블로그 최신 글 3개 보여주는 SQL -->
+	<select id="selectBlog3" resultType='BlogVO' parameterType="string">
+	<![CDATA[
+		SELECT p.*, i.*, m.mem_id AS mem_id FROM post p, image i, member m, blog b WHERE p.post_code = i.article_no AND m.mem_code = b.mem_code AND b.blog_code = p.blog_code AND 
+		b.mem_code=m.mem_code AND b.blog_code=(select blog_code from post where post_code=#{value}) AND 
+		rownum <= 3 ORDER BY TO_NUMBER(substr(p.post_code,3)) DESC
+	]]>
+	</select>
+	
+	<!-- 해당 글의 댓글 셀렉트 해주는 코드 -->
+	<select id="selectReply" resultType='BlogVO' parameterType='string'>
+		SELECT m.mem_id, r.* FROM member m, reply r WHERE m.mem_code=r.mem_code AND r.article_no=#{value} 
+		ORDER BY r.reply_code desc
+	</select>
+	
+	<!-- 해당글의 댓글 카운트 -->
+	<select id="countReply" parameterType='string' resultType='integer'>
+		SELECT count(reply_code) from reply where article_no = #{value} ORDER BY reply_code
+	</select>
+	
+	<!-- 댓글 인서트 -->
+	<insert id="insertReply" parameterType='BlogVO'>
+		INSERT INTO reply values(reply_seq.nextval, sysdate, 0, (select mem_code from member where mem_id=#{mem_id}), #{reply_content}, #{post_code})
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType='integer'>
+		DELETE FROM reply WHERE reply_code=#{value}
+	</delete>
+	
+	<!-- 댓글 수정 -->
+	<update id="updateReply" parameterType='hashMap'>
+		UPDATE reply SET reply_content = #{reply_content} WHERE reply_code=${reply_code}
+	</update>
+	
+	<!-- 포스트 코드로 글제목, 글내용 뽑아오는 sql -->
+	<select id="selectPostCode" parameterType = "string" resultType = 'BlogVO'>
+		SELECT post_code, post_title, post_content FROM post WHERE post_code = #{value}
+	</select>
+	
+	<update id="updateBlog" parameterType = 'BlogVO'>
+		UPDATE post SET post_title=#{post_title}, post_date = sysdate, postkind_code=(select postkind_code from postkind where postkind_name = #{postkind_name}) WHERE post_code=#{post_code}
+	</update>
+	
+	<update id="updateBlogImg" parameterType="BlogVO">
+		UPDATE image SET img_origin=#{img_origin}, img_route=#{img_route}, img_save=#{img_save}, img_reg=sysdate, img_size=#{img_size} WHERE article_no = #{post_code}
+	</update>
+	
+
+	
+	
+</mapper> 	

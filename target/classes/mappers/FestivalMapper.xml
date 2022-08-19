@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FestivalDAO">
+
+	<!-- 축제 제목,내용 조회 -->
+	<select resultType="FestivalVO" id="selectFestival">
+	select * from festival where fest_code = #{fest_code} 
+	</select>
+
+	<!-- <select resultType="String" id="selectImage">
+	select img_route from image where article_no = #{fest_code} 
+	</select> -->
+	
+	<!-- 축제 댓글 등록 -->
+	<insert id="insertReply" parameterType="FestivalVO">
+	insert into reply(reply_code, reply_date, reply_score, mem_code, reply_content, article_no)values(reply_seq.nextval, sysdate, #{reply_score}, #{mem_code}, #{reply_content}, #{fest_code}) 
+	</insert>
+	
+	<!-- 축제 댓글 작성자 호출 -->
+	<select resultType="string" id="commentName">
+	select mem_code from member where mem_id = #{value} 
+	</select>
+	
+	<!-- 축제 댓글 조회 -->
+	<select resultType="FestivalVO" id="selectReply" parameterType="string">
+		SELECT m.mem_id, m.mem_profile, r.* FROM member m, reply r WHERE m.mem_code=r.mem_code AND r.article_no=#{value}ORDER BY r.reply_code desc
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="integer">
+	DELETE FROM reply WHERE reply_code=#{value} 
+	</delete>
+	
+	<!-- 댓글 수정 -->
+	<update id="updateReply" parameterType="hashMap">
+	UPDATE reply SET reply_content = #{reply_content} WHERE reply_code=${reply_code}
+	</update>
+
+	<!-- 페이징 처리 -->
+	<select id="totalRecord" resultType="java.lang.Integer">
+		select count(*) from festival
+		<if test="value != null">
+	  	where fest_name like '%'||#{value}||'%'
+	  	</if>
+	</select>
+
+	<!-- 축제 글 작성 - LargeCategory 불러오기 -->
+	<select id="festLcat" resultType="String">
+		select fest_lcatname from fest_large
+	</select>
+	
+	<!-- 축제 마지막 Seq번호 알아오기 -->
+	<select id="festSeq" resultType="String">
+		SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'FESTIVAL_SEQ';
+	</select>
+	
+	<!-- 축제 글 작성 - SmallCategory 불러오기 -->
+	<select id="festScat" resultType="String">
+		select fest_scatname from fest_small where fest_lcatcode = (select fest_lcatcode from fest_large where fest_lcatname = #{value})
+	</select>
+
+	<!-- 축제 글 작성 - insert -->
+	<insert id="insertFestival" parameterType="FestivalVO">
+		insert into festival (fest_code, fest_name, fest_host, fest_startday, fest_endday, fest_content, fest_scatcode, fest_sim_addr, fest_detail_addr, fest_place, fest_tel)
+		values (festival_seq.Nextval, #{fest_name}, #{fest_host},#{fest_startday}, #{fest_endday}, #{fest_content}, (select fest_scatcode from fest_small where fest_scatname='${fest_scatname}'), #{fest_sim_addr}, #{fest_detail_addr}, #{fest_place}, #{fest_tel})
+	</insert>
+	
+	<!-- 이미지 등록 insert -->
+	<insert id="insertImg" parameterType="ImgVO">
+		insert into image values
+		(image_Seq.Nextval, #{img_origin}, #{img_route}, #{img_save}, #{img_type}, #{img_size}, sysdate, #{fest_code}, #{img_main})
+	</insert>
+	
+	<!-- 축제 글 List -->
+	<select id="listFestival" resultType="FestivalVO">
+	    select fest_code, fest_name, fest_startday, fest_endday, fest_place, fest_content, fest_tel, fest_email, fest_homepage
+	  	from (select rownum num, fest_code, fest_name, fest_startday, fest_endday, fest_place, fest_content, fest_tel, fest_email, fest_homepage 
+	  			from (select * from festival f order by fest_code desc))
+	  	where num between #{start} and #{end}
+	  	<if test="keyword != null">
+	  	and fest_name like '%'||#{keyword}||'%'
+	  	</if>
+  	</select>
+  	
+  	<!-- 축제 이미지 업로드 -->
+  	<insert id="imageInsert">
+  		insert into image values
+  		(image_Seq.Nextval, #{img_origin}, #{img_route}, #{img_save}, #{img_type}, #{img_size}, sysdate, #{article_no}, #{img_main})
+  	</insert>
+	
+	<!-- 좋아요 insert -->
+	<insert id="loveInsert">
+		insert into love values (love_Seq.Nextval, (select mem_code from member where mem_id=#{mem_id}), 'FE'||#{fest_code})
+	</insert>
+	
+	<!-- 좋아요 delete -->
+	<delete id="loveDelete">
+		delete from love where mem_code=(select mem_code from member where mem_id=#{mem_id}) and article_no='FE'||#{fest_code}
+	</delete>
+	
+	<!-- 좋아요 검색 -->
+	<select id="selectLove" parameterType="hashMap" resultType="int">
+		select count(love_code) from love where mem_code=(select mem_code from member where mem_id=#{mem_id}) and article_no='FE'||#{fest_code}
+	</select>
+	
+</mapper>

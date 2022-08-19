@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AonMapper">
+	
+	<!-- 상품 등록 -->
+	<insert id="aonInsert" parameterType="AonVO" >
+		INSERT INTO after_online(goods_code, goods_name, goods_price, fest_code, mem_code, ao_stock, goods_comment)
+		VALUES('af'|| after_online_seq.nextval, #{goods_name}, #{goods_price}, 21, 
+					2, #{ao_stock}, #{goods_comment})
+	</insert> 
+	
+ 	<insert id="aonInsert1" parameterType="AonVO">
+		INSERT INTO image(img_code, img_origin, img_route, img_save, img_type, img_size, img_reg, article_no)
+		VALUES(image_seq.nextval, #{img_origin}, #{img_route}, #{img_save}, #{img_type}, 
+				#{img_size}, sysdate, (select 'af'||max(substr(goods_code, 3)) from after_online))
+	</insert>  
+	
+	
+	<!-- 애온 리스트 출력  -->
+	<select id="selectAonList" resultType="AonVO">
+		SELECT a.*, i.* FROM after_online a, image i WHERE a.goods_code = i.article_no	
+	</select>
+	
+	<!--  상세보기 출력 -->
+	<select id="selectAonOne" resultType="AonVO" parameterType="string">
+ 		SELECT a.goods_code, i.img_code, i.article_no, a.goods_name, a.goods_price, a.ao_stock, a.goods_comment, i.img_save from after_online a, image i
+ 			WHERE a.goods_code = i.article_no AND a.goods_code=#{value}
+ 	</select> 
+	
+	
+	
+
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LoginMapper">
+
+	<select id="loginCheck" parameterType = "MemberVO" resultType="MemberVO">
+		SELECT * FROM member WHERE mem_id = #{mem_id} and mem_pwd = #{mem_pwd}
+	</select>
+	
+
+	<!-- 정보 찾기 -->
+	<select id="findKakao" parameterType="java.util.HashMap" resultType="KakaoVO"><!--KakaoVO-->
+			select * from kakao_table where k_name=#{nickname} and k_email=#{email} 
+		
+	<!-- 	select * from member where mem_name=#{mem_name} and mem_email=#{mem_email} -->
+	</select>
+
+	<!-- 정보 저장 -->
+	<insert id="kakaoInsert" parameterType="java.util.HashMap">
+ 	insert into kakao_table(k_number,k_name, k_email,kakao_id) values(kakao_seq.nextval,#{nickname}, #{email},'KA'||kakao_seq.nextval)
+	<!-- 		insert into member(mem_code,mem_id,mem_name,mem_email,type_code)values(member_seq.nextval,'KA'||kakao_seq.nextval,#{mem_name},#{mem_email},3) -->
+			
+	</insert>
+
+<insert id="insertKakaoMember" parameterType="java.util.HashMap">
+INSERT INTO MEMBER(
+mem_code,
+mem_id,
+mem_name,
+mem_email,
+type_code,
+mem_join)
+VALUES(
+member_seq.nextval,
+'KA'||kakao_seq.nextval,
+#{nickname},
+#{email},
+3,
+TO_CHAR(SYSDATE,'YYYY-MM-DD'))
+
+
+</insert>
+	
+
+</mapper> 	
