@@ -97,7 +97,9 @@ public class BlogController {
 	@RequestMapping("perBlog")
 	public String openPerBlog(Model m, @RequestParam(value = "mem_id") String mem_id) {
 		List<BlogVO> blogList = blogService.selectPost(mem_id);
+		String profile = blogService.selectProfile(mem_id);
 		m.addAttribute("blogList", blogList);
+		m.addAttribute("profile", profile);
 
 		return "blog/perBlog";
 	}

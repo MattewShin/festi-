@@ -50,5 +50,8 @@ public interface BlogDAO {
 	//블로그 글 업데이트
 	public Integer updateBlog(BlogVO bvo);
 	
+	//개인블로그 프로필 가져오는 메소드
+	public String selectProfile(String mem_id);
+	
 
 }

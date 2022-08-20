@@ -49,7 +49,7 @@ public class MypageController {
 	          
 	          //이게 맞는지 모르겠지만 경로는 이렇게 줌
 	          // 해당 경로로 변경
-	          File f = new File("D:\\final\\src\\main\\webapp\\resources\\mypage\\upload\\"+img_save);
+	          File f = new File("C:\\Users\\kosmo\\git\\festi-\\src\\main\\webapp\\resources\\mypage\\upload\\"+img_save);
 	       
 
 	          try {

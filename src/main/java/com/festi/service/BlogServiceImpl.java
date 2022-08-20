@@ -105,4 +105,10 @@ public class BlogServiceImpl implements BlogService{
 		return blogDAO.updateBlog(bvo);
 	}
 
+	@Override
+	public String selectProfile(String mem_id) {
+		// TODO Auto-generated method stub
+		return blogDAO.selectProfile(mem_id);
+	}
+
 }

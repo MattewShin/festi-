@@ -39,10 +39,15 @@
 		]]>
 	</select>
 	
+	<!-- 개인블로그 프로필 보여주는 sql -->
+	<select id="selectProfile" parameterType='string' resultType='string'>
+		select mem_profile from member where mem_id=#{value}
+	</select>
+	
 	<!-- 전제 글 가져와서 페이징 처리 후 오더바이 때려주는 sql -->
 	<select id="selectAllPost" parameterType="hashmap" resultType="BlogVO">
 		<![CDATA[
-			SELECT * FROM (SELECT p.post_code, p.post_title, p.post_content, p.post_date, i.img_save, m.mem_id, rownum rnum FROM member m, blog b, post p, image i WHERE 
+			SELECT * FROM (SELECT p.post_code, p.post_title, p.post_content, p.post_date, i.img_save, m.mem_profile, m.mem_id, rownum rnum FROM member m, blog b, post p, image i WHERE 
 			m.mem_code = b.mem_code AND b.blog_code = p.blog_code AND p.post_code = i.article_no AND
 			substr(i.article_no, 1, 2) = 'po' 
 		]]>
@@ -66,7 +71,7 @@
 	
 	<!-- 자세한 블로그 글 가져오는 sql -->
 	<select id="selectBlogDetail" resultType='BlogVO' parameterType="string">
-		SELECT p.*, i.*, m.mem_id AS mem_id FROM post p, image i, blog b, member m WHERE p.post_code = i.article_no AND 
+		SELECT p.*, i.*, m.mem_id AS mem_id, m.mem_profile FROM post p, image i, blog b, member m WHERE p.post_code = i.article_no AND 
 		p.blog_code = b.blog_code AND b.mem_code = m.mem_code AND
 		p.post_code = #{value}
 	</select>

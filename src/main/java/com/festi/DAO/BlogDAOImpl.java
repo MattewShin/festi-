@@ -128,6 +128,12 @@ public class BlogDAOImpl implements BlogDAO {
 		return null;
 	}
 
+	@Override
+	public String selectProfile(String mem_id) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("BlogMapper.selectProfile", mem_id);
+	}
+
 
 
 

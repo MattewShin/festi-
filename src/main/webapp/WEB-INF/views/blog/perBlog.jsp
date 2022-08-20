@@ -141,7 +141,7 @@
 			<h1
 				class="u-align-center-xs u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-1">self
 				introduce</h1>
-			<div class="u-image u-image-circle u-image-1" alt=""
+			<div class="u-image u-image-circle u-image-1" style="background-image: URL(resources/mypage/upload/${profile})" alt=""
 				data-image-width="400" data-image-height="265"></div>
 			<p
 				class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-2">Sample

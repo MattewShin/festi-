@@ -138,7 +138,7 @@
 						<a href="gotoDetail?post_code=${allList.post_code}" class="block-20 img d-flex align-items-end gotoDetail" value='bl1' style="background-image: url('resources/blogpage/upload/${allList.img_save}');">
 							<div class="list-team d-flex align-items-center mb-4">
 								<div class="d-flex align-items-center">
-									<div class="img" style="background-image: url(resources/blogpage/images/person_1.jpg);"></div>
+									<div class="img" style="background-image: url(resources/mypage/upload/${allList.mem_profile});"></div>
 									<h3 class="ml-2 mb-0">${allList.mem_id}</h3>
 								</div>
 								<div class="text-right">
@@ -164,13 +164,6 @@
 				<div class="col text-center">
 					<div class="block-27">
 						<ul>
-							<!-- <li><a href="#">&lt;</a></li>
-							<li class="active"><span>1</span></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">&gt;</a></li> -->
 							<c:forEach var='i' begin='1' end='${totalPage }'>
 								<li><a href='blog?pageNum=${i}'>${i}</a></li>
 							</c:forEach>
